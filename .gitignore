@@ -1,2 +1,4 @@
 .vscode
 bin
+.clang-format
+.DS_Store
