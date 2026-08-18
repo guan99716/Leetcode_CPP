@@ -1,0 +1,1 @@
+print([].append(3))
