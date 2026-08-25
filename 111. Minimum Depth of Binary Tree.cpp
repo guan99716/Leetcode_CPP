@@ -1,7 +1,5 @@
 #include <queue>
-#include <vector>
 using namespace std;
-
 struct TreeNode {
     int val;
     TreeNode *left;
@@ -12,32 +10,34 @@ struct TreeNode {
 };
 class Solution {
 private:
-    void traverse(TreeNode* root, vector<vector<int>>& res) {
+    int bfs(TreeNode *root) {
         if (!root)
-            return;
-        queue<TreeNode*> q;
+            return 0;
+        queue<TreeNode *> q;
         q.push(root);
+        int depth = 1;
         while (!q.empty()) {
             int size = q.size();
-            vector<int> current;
             for (int i = 0; i < size; i++) {
-                TreeNode* node = q.front();
-                current.push_back(node->val);
+                TreeNode *node = q.front();
                 q.pop();
+                // if node is the first leaf, then return depth
+                if (!node->left && !node->right)
+                    return depth;
                 if (node->left)
                     q.push(node->left);
-
                 if (node->right)
                     q.push(node->right);
             }
-            res.push_back(current);
+            depth++;
         }
+        return 0;
     }
 
 public:
-    vector<vector<int>> levelOrder(TreeNode* root) {
-        vector<vector<int>> res;
-        traverse(root, res);
-        return res;
+    int minDepth(TreeNode *root) {
+        if (!root)
+            return 0;
+        return bfs(root);
     }
 };
