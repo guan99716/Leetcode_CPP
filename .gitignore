@@ -3,3 +3,4 @@ bin
 out
 .clang-format
 .DS_Store
+test.cpp

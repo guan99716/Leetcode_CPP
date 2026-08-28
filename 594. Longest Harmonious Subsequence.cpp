@@ -11,8 +11,6 @@ public:
             um[n]++;
         }
         for(auto &[key,val] : um){
-            if(um.count(key-1))
-                maxLen = max(maxLen, um[key]+um[key-1]);
             if(um.count(key+1))
                 maxLen = max(maxLen, um[key]+um[key+1]);
         }
